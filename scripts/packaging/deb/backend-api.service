@@ -1,0 +1,15 @@
+[Unit]
+Description=Backend API for cachegate
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/default/backend-api
+ExecStart=/usr/local/bin/backend-api
+Restart=on-failure
+RestartSec=3
+User=ubuntu
+WorkingDirectory=/home/ubuntu
+
+[Install]
+WantedBy=multi-user.target
