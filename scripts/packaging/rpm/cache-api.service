@@ -1,0 +1,15 @@
+[Unit]
+Description=Cache Proxy API for cachegate
+After=network.target redis.service
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/sysconfig/cache-api
+ExecStart=/opt/cache-api/venv/bin/python /opt/cache-api/app.py
+Restart=on-failure
+RestartSec=3
+WorkingDirectory=/opt/cache-api
+User=centos
+
+[Install]
+WantedBy=multi-user.target
